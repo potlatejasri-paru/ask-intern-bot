@@ -299,7 +299,7 @@ export function respond(input: string, state: AssistantState): Turn {
   const base = { intent, confidence, entities, sentiment };
 
   if (intent === "restart") {
-    return { ...base, reply: INTENTS.restart.responses[0], state: { ...initialState } };
+    return { ...base, reply: INTENTS.restart.responses[0]!, state: { ...initialState } };
   }
 
   if (intent === "status") {
@@ -325,7 +325,7 @@ export function respond(input: string, state: AssistantState): Turn {
       return { ...base, reply: greet + PROMPTS[slot], state: newState };
     }
     if (intent === "greeting") {
-      return { ...base, reply: INTENTS.greeting.responses[0], state };
+      return { ...base, reply: INTENTS.greeting.responses[0]!, state };
     }
     return {
       ...base,
