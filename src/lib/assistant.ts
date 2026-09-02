@@ -168,7 +168,7 @@ export function extractEntities(text: string): Entities {
   const e: Entities = {};
 
   const nameMatch = text.match(/(?:my name is|i am|i'm|this is|name[:\s-]+)\s*([a-zA-Z][a-zA-Z.\s]{1,49})/i);
-  if (nameMatch) e.name = titleCase(nameMatch[1]);
+  if (nameMatch?.[1]) e.name = titleCase(nameMatch[1]);
 
   const emailMatch = text.match(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/);
   if (emailMatch) e.email = emailMatch[0].toLowerCase();
